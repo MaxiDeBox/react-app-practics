@@ -9,7 +9,7 @@ function App() {
   return (
     <div style={divStyle}>
       <h1>Hello React</h1>
-      <Car />
+      <Car carName={'Ford'} carYear={2018} />
     </div>
   );
 }
