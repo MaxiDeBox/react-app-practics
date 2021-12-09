@@ -8,7 +8,7 @@ function App() {
       {name: 'BMW', year: 2020},
       {name: 'Mazda 1', year: 2016},
     ],
-    pageTitle: 'React '
+    pageTitle: 'React component'
   };
 
   const divStyle = {
