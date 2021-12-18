@@ -13,6 +13,7 @@ function App() {
 
   const divStyle = {
     textAlign: 'center',
+    color: 'red'
   }
 
   const cars = state.cars;
