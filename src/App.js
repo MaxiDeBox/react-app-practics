@@ -25,9 +25,18 @@ function App() {
     });
   };
 
+  const handleInput = (event) => {
+    setState({
+      ...state,
+      pageTitle: event.target.value
+    });
+  };
+
   return (
     <div style={divStyle}>
       <h1>{state.pageTitle}</h1>
+
+      <input type="text" onChange={handleInput} />
 
       <button
         onClick={changeTitleHandler.bind(changeTitleHandler, 'Changed!')}
