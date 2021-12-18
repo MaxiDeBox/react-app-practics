@@ -16,8 +16,6 @@ function App() {
     textAlign: 'center',
   }
 
-  const cars = state.cars;
-
   const changeTitleHandler = (newTitle) => {
     setState({
       ...state,
@@ -44,21 +42,32 @@ function App() {
         change title
       </button>
 
-      <Car
-        carName={cars[0].name}
-        carYear={cars[0].year}
-        onChangeTitle={changeTitleHandler.bind(changeTitleHandler, cars[0].name)}
-      />
-      <Car
-        carName={cars[1].name}
-        carYear={cars[1].year}
-        onChangeTitle={() => changeTitleHandler(cars[1].name)}
-      />
-      <Car
-        carName={cars[2].name}
-        carYear={cars[2].year}
-        onChangeTitle={() => changeTitleHandler(cars[2].name)}
-      />
+      { state.cars.map((item, i) => {
+        return (
+          <Car
+            key={i}
+            carName={item.name}
+            carYear={item.year}
+            onChangeTitle={() => changeTitleHandler(item.name)}
+          />
+        )
+      }) }
+
+      {/*<Car*/}
+      {/*  carName={cars[0].name}*/}
+      {/*  carYear={cars[0].year}*/}
+      {/*  onChangeTitle={changeTitleHandler.bind(changeTitleHandler, cars[0].name)}*/}
+      {/*/>*/}
+      {/*<Car*/}
+      {/*  carName={cars[1].name}*/}
+      {/*  carYear={cars[1].year}*/}
+      {/*  onChangeTitle={() => changeTitleHandler(cars[1].name)}*/}
+      {/*/>*/}
+      {/*<Car*/}
+      {/*  carName={cars[2].name}*/}
+      {/*  carYear={cars[2].year}*/}
+      {/*  onChangeTitle={() => changeTitleHandler(cars[2].name)}*/}
+      {/*/>*/}
     </div>
   );
 }
