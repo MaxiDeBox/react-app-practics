@@ -13,14 +13,20 @@ function App() {
 
   const divStyle = {
     textAlign: 'center',
-    color: 'red'
   }
 
   const cars = state.cars;
 
+  const changeTitleHandler = () => {
+    console.log("Clicked");
+  };
+
   return (
     <div style={divStyle}>
       <h1>{state.pageTitle}</h1>
+
+      <button onClick={changeTitleHandler}>change title</button>
+
       <Car carName={cars[0].name} carYear={cars[0].year} />
       <Car carName={cars[1].name} carYear={cars[1].year} />
       <Car carName={cars[2].name} carYear={cars[2].year} />
