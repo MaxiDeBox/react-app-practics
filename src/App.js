@@ -17,12 +17,34 @@ function App() {
     textAlign: 'center',
   }
 
-  const changeTitleHandler = (newTitle) => {
+  // const changeTitleHandler = (newTitle) => {
+  //   setState({
+  //     ...state,
+  //     pageTitle: newTitle,
+  //   });
+  // };
+
+  const onChangeName = (name, i) => {
+    const car = state.cars[i];
+    car.name = name;
+    const cars = [...state.cars];
+    cars[i] = car;
+
     setState({
       ...state,
-      pageTitle: newTitle,
+      cars
     });
   };
+
+  const deleteHandler = (i) => {
+    const cars = state.cars.concat();
+    cars.splice(i, 1);
+
+    setState({
+      ...state,
+      cars
+    })
+  }
 
   const toggleCarsHandler = () => {
     setState({
@@ -40,7 +62,8 @@ function App() {
           key={i}
           carName={item.name}
           carYear={item.year}
-          onChangeTitle={() => changeTitleHandler(item.name)}
+          onDelete={() => deleteHandler(i)}
+          onChangeName={(event) => onChangeName(event.target.value, i)}
         />
       )
     })
