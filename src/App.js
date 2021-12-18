@@ -9,7 +9,8 @@ function App() {
       {name: 'BMW', year: 2020},
       {name: 'Mazda 1', year: 2016},
     ],
-    pageTitle: 'React component'
+    pageTitle: 'React component',
+    showCars: false
   });
 
   const divStyle = {
@@ -19,55 +20,43 @@ function App() {
   const changeTitleHandler = (newTitle) => {
     setState({
       ...state,
-      pageTitle: newTitle
+      pageTitle: newTitle,
     });
   };
 
-  const handleInput = (event) => {
+  const toggleCarsHandler = () => {
     setState({
       ...state,
-      pageTitle: event.target.value
-    });
-  };
+      showCars: !state.showCars
+    })
+  }
+
+  let cars = null;
+
+  if (state.showCars) {
+    cars = state.cars.map((item, i) => {
+      return (
+        <Car
+          key={i}
+          carName={item.name}
+          carYear={item.year}
+          onChangeTitle={() => changeTitleHandler(item.name)}
+        />
+      )
+    })
+  }
 
   return (
     <div style={divStyle}>
       <h1>{state.pageTitle}</h1>
 
-      <input type="text" onChange={handleInput} />
-
       <button
-        onClick={changeTitleHandler.bind(changeTitleHandler, 'Changed!')}
+        onClick={toggleCarsHandler}
       >
-        change title
+        Toggle cars
       </button>
 
-      { state.cars.map((item, i) => {
-        return (
-          <Car
-            key={i}
-            carName={item.name}
-            carYear={item.year}
-            onChangeTitle={() => changeTitleHandler(item.name)}
-          />
-        )
-      }) }
-
-      {/*<Car*/}
-      {/*  carName={cars[0].name}*/}
-      {/*  carYear={cars[0].year}*/}
-      {/*  onChangeTitle={changeTitleHandler.bind(changeTitleHandler, cars[0].name)}*/}
-      {/*/>*/}
-      {/*<Car*/}
-      {/*  carName={cars[1].name}*/}
-      {/*  carYear={cars[1].year}*/}
-      {/*  onChangeTitle={() => changeTitleHandler(cars[1].name)}*/}
-      {/*/>*/}
-      {/*<Car*/}
-      {/*  carName={cars[2].name}*/}
-      {/*  carYear={cars[2].year}*/}
-      {/*  onChangeTitle={() => changeTitleHandler(cars[2].name)}*/}
-      {/*/>*/}
+      { cars }
     </div>
   );
 }
