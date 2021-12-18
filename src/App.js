@@ -1,15 +1,16 @@
 import './App.css';
 import Car from './Car/Car';
+import React, {Component, useState} from 'react';
 
 function App() {
-  const state = {
+  const [state, setState] = useState({
     cars: [
       {name: 'Ford', year: 2018},
       {name: 'BMW', year: 2020},
       {name: 'Mazda 1', year: 2016},
     ],
     pageTitle: 'React component'
-  };
+  });
 
   const divStyle = {
     textAlign: 'center',
@@ -18,7 +19,15 @@ function App() {
   const cars = state.cars;
 
   const changeTitleHandler = () => {
-    console.log("Clicked");
+    const oldTitle = state.pageTitle;
+    const newTitle = oldTitle + ' (changed!)';
+
+    console.log(oldTitle);
+
+    setState({
+      ...state,
+      pageTitle: newTitle
+    });
   };
 
   return (
