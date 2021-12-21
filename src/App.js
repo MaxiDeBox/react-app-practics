@@ -79,7 +79,13 @@ function App() {
         Toggle cars
       </button>
 
-      { cars }
+      <div style={{
+        width: '400px',
+        margin: 'auto',
+        paddingTop: '20px'
+      }}>
+        { cars }
+      </div>
     </div>
   );
 }
