@@ -1,4 +1,4 @@
-import './App.scss';
+import classes from './App.module.scss';
 import Car from './Car/Car';
 import React, {useState} from 'react';
 
@@ -70,21 +70,23 @@ function App() {
   }
 
   return (
-    <div style={divStyle}>
-      <h1>{state.pageTitle}</h1>
+    <div className={classes.Wrap}>
+      <div style={divStyle}>
+        <h1>{state.pageTitle}</h1>
 
-      <button
-        onClick={toggleCarsHandler}
-      >
-        Toggle cars
-      </button>
+        <button
+          onClick={toggleCarsHandler}
+        >
+          Toggle cars
+        </button>
 
-      <div style={{
-        width: '400px',
-        margin: 'auto',
-        paddingTop: '20px'
-      }}>
-        { cars }
+        <div style={{
+          width: '400px',
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
+          { cars }
+        </div>
       </div>
     </div>
   );
