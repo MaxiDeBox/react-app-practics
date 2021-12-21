@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Car from './Car/Car';
 import React, {useState} from 'react';
 
