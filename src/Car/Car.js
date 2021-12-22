@@ -3,7 +3,26 @@ import Radium from 'radium';
 import "./Car.scss";
 
 class Car extends React.Component {
+  // Жизненный цикл изменения
+  componentWillReceiveProps(nextProps) {
+    console.log("Car componentWillReceiveProps", nextProps);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("Car shouldComponentUpdate", nextProps, nextState);
+    return nextProps.carName.trim() !== this.props.carName.trim();
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log("Car componentWillUpdate", nextProps, nextState);
+  }
+
+  componentDidUpdate() {
+    console.log("Car componentDidUpdate");
+  }
+
   render() {
+    console.log("Car render");
     const inputClasses = ['input'];
 
     if(this.props.carName !== '') {
@@ -80,4 +99,5 @@ class Car extends React.Component {
 //   );
 // }
 
-export default Radium(Car);
+//export default Radium(Car);
+export default Car;
