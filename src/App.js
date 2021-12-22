@@ -44,14 +44,14 @@ function App() {
       ...state,
       cars
     })
-  }
+  };
 
   const toggleCarsHandler = () => {
     setState({
       ...state,
       showCars: !state.showCars
     })
-  }
+  };
 
   let cars = null;
 
