@@ -1,5 +1,5 @@
 import React from "react";
-import Radium from 'radium';
+// import Radium from 'radium';
 import "./Car.scss";
 
 class Car extends React.Component {
@@ -42,6 +42,9 @@ class Car extends React.Component {
 
   render() {
     console.log("Car render");
+    if (Math.random() > 0.7) {
+      throw new Error("Car random failed");
+    }
     const inputClasses = ['input'];
 
     if(this.props.carName !== '') {
