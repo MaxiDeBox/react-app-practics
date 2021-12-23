@@ -2,12 +2,14 @@ import classes from './App.module.scss';
 import Car from './Car/Car';
 import React, {useState} from 'react';
 
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+
 function App() {
   const [state, setState] = useState({
     cars: [
       {name: 'Ford', year: 2018},
-      // {name: 'BMW', year: 2020},
-      // {name: 'Mazda 1', year: 2016},
+      {name: 'BMW', year: 2020},
+      {name: 'Mazda 1', year: 2016},
     ],
     pageTitle: 'React component',
     showCars: false
@@ -58,13 +60,14 @@ function App() {
   if (state.showCars) {
     cars = state.cars.map((item, i) => {
       return (
-        <Car
-          key={i}
-          carName={item.name}
-          carYear={item.year}
-          onDelete={() => deleteHandler(i)}
-          onChangeName={(event) => onChangeName(event.target.value, i)}
-        />
+        <ErrorBoundary key={i}>
+          <Car
+            carName={item.name}
+            carYear={item.year}
+            onDelete={() => deleteHandler(i)}
+            onChangeName={(event) => onChangeName(event.target.value, i)}
+          />
+        </ErrorBoundary>
       )
     })
   }
