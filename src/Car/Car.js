@@ -8,17 +8,31 @@ class Car extends React.Component {
     console.log("Car componentWillReceiveProps", nextProps);
   }
 
+  // Deprecated
   shouldComponentUpdate(nextProps, nextState) {
     console.log("Car shouldComponentUpdate", nextProps, nextState);
     return nextProps.carName.trim() !== this.props.carName.trim();
   }
 
+  // Deprecated
   componentWillUpdate(nextProps, nextState) {
     console.log("Car componentWillUpdate", nextProps, nextState);
   }
 
+  // Жизненные циклы React 16.3+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log("Car getDerivedStateFromProps", nextProps, prevState);
+
+    return prevState;
+  }
+
   componentDidUpdate() {
     console.log("Car componentDidUpdate");
+  }
+
+  // Жизненные циклы React 16.3+
+  getSnapshotBeforeUpdate() {
+    console.log("Car getSnapshotBeforeUpdate");
   }
 
   // Жизненный цикл удаления
