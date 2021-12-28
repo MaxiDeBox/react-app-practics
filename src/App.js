@@ -63,6 +63,7 @@ function App() {
       return (
         <ErrorBoundary key={i}>
           <Car
+            index={i}
             carName={item.name}
             carYear={item.year}
             onDelete={() => deleteHandler(i)}
