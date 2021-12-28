@@ -5,8 +5,11 @@ import React, {useState} from 'react';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import Counter from "./Counter/Counter";
 
+export const ClickedContext = React.createContext(false);
+
 function App() {
   const [state, setState] = useState({
+    clicked: false,
     cars: [
       {name: 'Ford', year: 2018},
       {name: 'BMW', year: 2020},
@@ -78,13 +81,17 @@ function App() {
     <div className={classes.Wrap}>
       <div style={divStyle}>
         <h1>{state.pageTitle}</h1>
-        <Counter />
+        <ClickedContext.Provider value={state.clicked}>
+          <Counter />
+        </ClickedContext.Provider>
+
         <button
           onClick={toggleCarsHandler}
         >
           Toggle cars
         </button>
 
+        <button onClick={() => setState({clicked: true})}>Change clicked!</button>
         <div style={{
           width: '400px',
           margin: 'auto',
