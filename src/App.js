@@ -9,8 +9,8 @@ function App() {
   const [state, setState] = useState({
     cars: [
       {name: 'Ford', year: 2018},
-      // {name: 'BMW', year: 2020},
-      // {name: 'Mazda 1', year: 2016},
+      {name: 'BMW', year: 2020},
+      {name: 'Mazda 1', year: 2016},
     ],
     pageTitle: 'React component',
     showCars: false
